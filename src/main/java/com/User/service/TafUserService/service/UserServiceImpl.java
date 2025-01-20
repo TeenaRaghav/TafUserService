@@ -44,16 +44,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public ResponseEntity<UserDTO> updateUser(Long id, UserDTO userDTO) {
         // Set the ID from the URL to the provided userDTO
-        userDTO.setId(id);
+        userDTO.setUserId(id);
         // Make a PUT request to TafDatastoreService to update the user
         restTemplate.put(url + "/" + id, userDTO);
         return ResponseEntity.ok(userDTO);
     }
 
-//    public ResponseEntity<List<UserDTO>> getUsers() {
-//        List<UserDTO> users = Collections.singletonList(restTemplate.getForObject(url, UserDTO.class));
-//        return ResponseEntity.ok(users);
-//    }
+//
     @Override
     public ResponseEntity<List<UserDTO>> getUsers() {
         // Use ParameterizedTypeReference to specify the response type as a List of UserDTO
